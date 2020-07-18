@@ -8,12 +8,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "next": "9.3.5",
+    "next-redux-wrapper": "^6.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "swr": "^0.2.3"
   },
   "devDependencies": {
     "redux-devtools": "^3.5.0"
