@@ -5,7 +5,8 @@ import axios from "axios";
 export function getPosts() {
   return fetch(url);
 }
-export async function createPost(post) {
+export async function createPost({post}: {post: {title: string, body: string}}, e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault()
   axios
     .post(url, post)
     .then((response) => {

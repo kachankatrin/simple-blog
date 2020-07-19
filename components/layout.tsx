@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
-import Nav from "../components/nav";
+import Nav from "./nav";
 
 const name = "Blogger Name";
-export const siteTitle = "Simple Blog";
+export const siteTitle: string = "Simple Blog";
 
-export default function Layout({ children, home, id }) {
+export default function Layout({ children, home, id }: {children: React.ReactNode; home?: boolean; id?: string}) {
   return (
     <div id={id}>
       <Head>
@@ -19,7 +19,7 @@ export default function Layout({ children, home, id }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Nav id={id} />
+      <Nav />
       <header>
         {home ? (
           <>

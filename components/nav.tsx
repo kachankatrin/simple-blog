@@ -1,11 +1,13 @@
-import React from "react";
+// import React from "react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-const Nav = () => {
-  const [id, setId] = useState("5930");
+import {Id} from '../tsc/id.model';
+
+const Nav: React.FC = (): JSX.Element => {
+  const [id, setId] = useState<Id []>([]);
 
   useEffect(() => {
-    const localId = localStorage.getItem("id");
+    const localId: string = localStorage.getItem("id");
     if (localId !== "undefined") {
       console.log(localId);
       setId(JSON.parse(localId));
@@ -14,7 +16,7 @@ const Nav = () => {
       setId(JSON.parse("5930"));
     }
   }, []);
-
+  
   return (
     <nav>
       <ul>
@@ -35,7 +37,7 @@ const Nav = () => {
         </li>
       </ul>
 
-      <style jsx>{`
+      {/* <style jsx>{`
         :global(body) {
           margin: 0;
           font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
@@ -60,7 +62,7 @@ const Nav = () => {
           text-decoration: none;
           font-size: 13px;
         }
-      `}</style>
+      `}</style> */}
     </nav>
   );
 };

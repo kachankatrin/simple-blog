@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { createPost } from "../utils";
+import {PostState, Visibility} from '../tsc/postState.model'
 
-export default function PostForm() {
-  const [post, setPost] = useState({ title: "", body: "" });
-  const [show, setShow] = useState({ display: "none" });
+const PostForm: React.FC = (): JSX.Element => {
+
+  const [post, setPost] = useState<PostState>({ title: "", body: "" });
+  const [show, setShow] = useState<Visibility>({ display: "none" });
   const { title, body } = post;
 
-  const changeHandler = (e) => {
-    setPost({ ...post, [e.target.name]: e.target.value });
+  const changeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+    setPost({ ...post, [e.currentTarget.name]: e.currentTarget.value });
   };
 
   const clearInput = () => {
@@ -21,14 +23,13 @@ export default function PostForm() {
   };
 
   return (
-    <div state={useState}>
+    <div>
       <button onClick={clickHandler}>Create</button>
       <form
         style={show}
         onSubmit={(e) => {
-          createPost(post);
+          createPost({post}, e);
           clearInput();
-          e.preventDefault();
         }}
       >
         <button
@@ -58,3 +59,5 @@ export default function PostForm() {
     </div>
   );
 }
+
+export default PostForm
