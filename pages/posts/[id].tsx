@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { url } from "../../utils";
+import { url, MyGlobalStyle } from "../../utils";
 import Post from "../../components/Post";
 import Layout from "../../components/layout";
 import { useRouter } from "next/router";
@@ -16,7 +16,8 @@ export default function SinglePost() {
   localStorage.setItem("id", data.id);
 
   return (
-    <Layout id={data.id}>
+    <Layout>
+      <MyGlobalStyle />
       <Head>
         <title>{data.title}</title>
       </Head>

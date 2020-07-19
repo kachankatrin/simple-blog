@@ -1,13 +1,35 @@
 import Head from "next/head";
 import Link from "next/link";
 import Nav from "./nav";
+import styled from "styled-components";
 
+import Header from "../components/header";
 const name = "Blogger Name";
 export const siteTitle: string = "Simple Blog";
+const BlogHeader = styled.header`
+  text-align: center;
+  padding: 12rem;
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+  background-image: url(https://picsum.photos/1000/300);
+    background-size: cover;
+    margin-top: 5rem
+`;
 
-export default function Layout({ children, home, id }: {children: React.ReactNode; home?: boolean; id?: string}) {
+const BackButton = styled.a`
+  margin: 5rem;
+  cursor: pointer;
+`;
+
+export default function Layout({
+  children,
+  home,
+}: {
+  children: React.ReactNode;
+  home?: boolean;
+}) {
   return (
-    <div id={id}>
+    <div>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -19,8 +41,9 @@ export default function Layout({ children, home, id }: {children: React.ReactNod
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+      <Header />
       <Nav />
-      <header>
+      <BlogHeader>
         {home ? (
           <>
             <h1>{name}</h1>
@@ -39,12 +62,12 @@ export default function Layout({ children, home, id }: {children: React.ReactNod
             </h2>
           </>
         )}
-      </header>
+      </BlogHeader>
       <main>{children}</main>
       {!home && (
         <div>
           <Link href="/">
-            <a>← Back to home</a>
+            <BackButton>← Back to home</BackButton>
           </Link>
         </div>
       )}

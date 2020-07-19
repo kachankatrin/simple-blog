@@ -2,6 +2,32 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {Id} from '../tsc/id.model';
+import styled from 'styled-components';
+
+const ListElement = styled.li`
+    list-style: none;
+    cursor: pointer;
+  `;
+
+  const LinkElement = styled.a`
+    color: #615b5b;
+    text-decoration: none;
+    font-size: 2rem;
+    ${ListElement}:hover & {
+      color: black;
+    }
+  `;
+  const NavBar = styled.nav`
+    border-top: 1px solid #9e9a97;
+    border-bottom: 1px solid #9e9a97;
+    padding: 0.5rem;
+  `;
+
+  const List = styled.ul`
+    display: flex;
+    justify-content: space-evenly;
+    padding: 4px 16px;
+  `;
 
 const Nav: React.FC = (): JSX.Element => {
   const [id, setId] = useState<Id []>([]);
@@ -16,54 +42,27 @@ const Nav: React.FC = (): JSX.Element => {
       setId(JSON.parse("5930"));
     }
   }, []);
-  
-  return (
-    <nav>
-      <ul>
-        <li>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/posts/newPost" as={`/posts/new`}>
-            <a>Create new Post</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/posts/[id]" as={`/posts/${id}`}>
-            <a>Last Viewed Post</a>
-          </Link>
-        </li>
-      </ul>
 
-      {/* <style jsx>{`
-        :global(body) {
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
-            Helvetica, sans-serif;
-        }
-        nav {
-          text-align: center;
-        }
-        ul {
-          display: flex;
-          justify-content: space-between;
-        }
-        nav > ul {
-          padding: 4px 16px;
-        }
-        li {
-          display: flex;
-          padding: 6px 8px;
-        }
-        a {
-          color: #067df7;
-          text-decoration: none;
-          font-size: 13px;
-        }
-      `}</style> */}
-    </nav>
+  return (
+    <NavBar>
+      <List>
+        <ListElement>
+          <Link href="/">
+            <LinkElement>Home</LinkElement>
+          </Link>
+        </ListElement>
+        <ListElement>
+          <Link href="/posts/newPost" as={`/posts/new`}>
+            <LinkElement>Create new Post</LinkElement>
+          </Link>
+        </ListElement>
+        <ListElement>
+          <Link href="/posts/[id]" as={`/posts/${id}`}>
+            <LinkElement>Last Viewed Post</LinkElement>
+          </Link>
+        </ListElement>
+      </List>
+    </NavBar>
   );
 };
 
