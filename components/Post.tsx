@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styled from "styled-components";
-// export { PostListElement } from '../pages/index';
 
 export const PostListElement = styled.a`
   overflow: scroll;
@@ -31,19 +30,14 @@ const Post = ({
 }: {
   post: { title?: string; body?: string; isSent?: boolean; id?: string };
 }) => {
-  // const title: string = typeof post.title === "string" ? post.title : "wrong title";
-  // const body: string = typeof post.body === "string" ? post.body : "wrong body";
-
   return (
     <Link href="/posts/[id]" as={`/posts/${post.id}`}>
       <PostListElement widthCard="50%" margin="5rem auto">
-      {/* <a> */}
         <ImageContainer>
           <img src={`https://picsum.photos/seed/${post.id}/350`} />
         </ImageContainer>
         <Title>{post.title ? post.title : "Error: empty input"}</Title>
         <Paragraph>{post.body ? post.body : "Error: Empty body"}</Paragraph>
-      {/* </a> */}
       </PostListElement>
     </Link>
   );

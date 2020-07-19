@@ -6,18 +6,6 @@ import axios from "axios";
 import { NextPage } from "next";
 import styled from "styled-components";
 
-// export const PostListElement = styled.li`
-//   overflow: scroll;
-//   // width: 90%;
-//   background-color: white;
-//   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-//   display: flex;
-//   flex-flow: column wrap;
-//   justify-content: space-between;
-//   text-align: center;
-//   padding: 1rem 0;
-// `;
-
 const GridContainer = styled.ul`
   padding: 5rem;
   justify-content: center;
@@ -28,6 +16,11 @@ const GridContainer = styled.ul`
   > li {
     overflow: scroll;
     width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    :hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
     > a {
       width: 100%;
       margin: 0;
@@ -69,11 +62,8 @@ const Home: NextPage<Props> = ({ posts }) => {
 
 Home.getInitialProps = async function () {
   const res = await axios.get(url);
-
   const data = await res.data;
   console.log(data);
-  // console.log(data);
-
   return {
     posts: data,
   };

@@ -1,8 +1,8 @@
 export interface PostState {
-    title: string;
-    body: string
+  title: string;
+  body: string;
 }
 
 export interface Visibility {
-    display: string
+  display: string;
 }
